@@ -8,4 +8,11 @@ cask "jj-bond" do
   homepage "https://github.com/zhm20001/jj-bond"
 
   app "jj-bond.app"
+
+  caveats <<~EOS
+    jj-bond #{version} is not code-signed or notarized. macOS blocks the first
+    launch ("Apple cannot verify..."). Approve it once via
+    System Settings -> Privacy & Security -> Open Anyway, or run:
+      xattr -dr com.apple.quarantine /Applications/jj-bond.app
+  EOS
 end
